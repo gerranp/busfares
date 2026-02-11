@@ -13,7 +13,7 @@ function faretype() {
 
   //FIND FAREFILES ASSOCIATED
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "./tree/tree.xml", true);
+  xhr.open("GET", "tree/tree.xml", true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var xmlDoc = xhr.responseXML;
@@ -31,7 +31,7 @@ function faretype() {
       for (var i = 0; i < elements.length; i++) {
         //GATHER
         var fareFile = elements[i].children[1].textContent;
-        var fareFile = "./data/" + fareFile;
+        var fareFile = "data/" + fareFile;
         var fareName = elements[i].children[0].textContent;
         //ADD TO DROPDOWN
         if (

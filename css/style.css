@@ -1,7 +1,7 @@
 :root {
   --col: #bbbbbb;
-  --text: #000
-  --border: #f0f;
+  --text: #000;
+  --border: #000;
 }
 
 
@@ -45,12 +45,12 @@ p.result{
 button, select {
   font-size: 2.5vh;
   border-radius: 100px;
-  padding: 0.5vh
+  padding: 0.5vh;
 }
 
 label {
   font-size: 2.7vh;
-  color: #000000
+  color: #000000;
 }
 
 .bold{
@@ -88,7 +88,7 @@ select {
   color: var(--text);
   background: var(--col);
   max-width: 100%;
-  padding: 0.5vh
+  padding: 0.5vh;
 }
 
 button {
