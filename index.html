@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- SETUP -->
+<html>
+
+<head>
+  <!-- to work on mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <!-- tab bar -->
+  <title>Cornish Bus Fare Calculator | Kalkor Pris Viaj Kyttrin Kernewek</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+  <!-- imports -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script type="text/javascript" src="/js/line.js"></script>
+  <script type="text/javascript" src="/js/direction.js"></script>
+  <script type="text/javascript" src="/js/faretype.js"></script>
+  <script type="text/javascript" src="/js/board.js"></script>
+  <script type="text/javascript" src="/js/alight.js"></script>
+  <script type="text/javascript" src="/js/calculate.js"></script>
+  <script type="text/javascript" src="/js/reset.js"></script>
+  <script type="text/javascript" src="/js/clear.js"></script>
+  <!-- introduce select2 and jquery for it -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+  <!--TITLE--> <div class="section">
+  <h1 id="title">Cornish Bus Fare Calculator</h1>
+  <h2 id="title">Kalkor Pris Viaj Kyttrin Kernewek</h2>
+  </div>
+
+  <!--LINE--><div class="section">
+  <label class="bold" for="line">Which bus do you want to take?<br /></label>
+  <select name="line" id="line" class="line select2" onchange="direction()">
+    <option value="default">--select a line--</option>
+  </select>
+  <script>line()</script>
+  <p class="operator" id="operator"></p>
+  </div>
+
+  <!--DIRECTION--><div class="section">
+  <br/><label class="bold">Which direction are you travelling?</label><br/>
+  <input class="radio" type="radio" id="inbound" name="direction" value="inbound" onchange="faretype()"/>
+  <label id="inboundLabel" for="inbound">Inbound</label>
+  <br/>
+  <input class="radio" type="radio" id="outbound" name="direction" value="outbound" onchange="faretype()"/>
+  <label id="outboundLabel" for="outbound">Outbound</label>
+  </div>
+
+  <!--FARETYPE--><div class="section">
+  <label class="bold" for="faretype"><br />What type of ticket do you need?<br /></label>
+  <select name="faretype" id="faretype" class="faretype select2" onchange="board()">
+    <option value="default">--select a fare--</option>
+  </select>
+  </div>
+
+  <!--BOARDING--><div class="section">
+  <label class="bold" for="board"><br />Where are you catching the bus from?<br /></label>
+  <select name="board" id="board" class="board select2" onchange="alight()">
+    <option value="default">--select a stop--</option>
+  </select>
+  </div>
+
+  <!--ALIGHTING--><div class="section">
+  <label class="bold" for="alight"><br />Where do you want to get off?<br /></label>
+  <select name="alight" id="alight" class="alight select2" onchange="clear()">
+    <option value="default">--select a stop--</option>
+  </select>
+  </div>
+
+  <!--BUTTON--><div class="section">
+  <br/>
+  <button id="calculate" class="calculate" onclick="calculate()">Calculate</button>
+  <button id="reset" class="reset" onclick="reset()">Reset</button>
+  </div>
+
+  <!--RESULT STUFF--><div class="result">
+  <p id="result" class="result"></p>
+  <p id="cheaper"></p>
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+  $('.select2').select2();
+  });
+</script>
+
+
+<footer>
+  <p class="footer">Created by Gerran Parker</p>
+  <p class="footer">Data correct as of 11/03/2023</p>
+  <br/>
+  <p class="footer">Myself and this website are in no way affiliated with any transport company.</p>
+  <p class="footer">This is not my own data, instead taken from 
+    <a href="https://data.bus-data.dft.gov.uk/fares/?q=&area=73&organisation=&status=&is_fares_compliant=&submitform=submit&ordering=-modified">here</a> and 
+    <a href="https://opendata.ticketer.com/uk/FCWL/fares/current.zip">here</a>.</p>
+  <p class="footer">I cannot therefore warrant the accuracy or quality of any of the data.</p>
+</footer>
+
+
+</body>
+</html>
